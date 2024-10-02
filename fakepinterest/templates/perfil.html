@@ -5,6 +5,11 @@ Perfil - {{ usuario }}
 {% endblock %}
 
 {% block body %}
-Perfil - {{ usuario }}
-{% endblock %}
+<body>
 
+    <h1>Perfil do usuário: {{ usuario }}</h1>
+    
+    <a href="{{ url_for('logout') }}">Sair</a>
+
+</body>
+{% endblock %}

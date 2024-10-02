@@ -2,7 +2,7 @@
 from flask import render_template, url_for, redirect
 from fakepinterest import app, database, bcrypt
 from fakepinterest.models import Usuario, Foto
-from flask_login import login_required, login_user, logout_user
+from flask_login import login_required, login_user, logout_user, current_user
 from fakepinterest.forms import FormLogin, FormCriarConta
 
 
@@ -34,3 +34,11 @@ def criarconta():
 @login_required
 def perfil(usuario):
     return render_template("perfil.html", usuario=usuario)
+
+
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("homepage", usuario=usuario.username))
